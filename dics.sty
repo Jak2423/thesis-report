@@ -35,7 +35,6 @@
 \newcommand{\gradyear}[1]{\renewcommand{\@gradyear}{#1}}
 \newcommand{\@gradyear}{\tt$\backslash$\string gradyear}
 % Define "\chair" and \member commands for title page.
-\newcommand{\company}[1]{\newcommand{\@company}{#1}}
 \newcommand{\supervisor}[1]{\newcommand{\@supervisor}{#1}}
 \newcommand{\cosupervisor}[1]{\newcommand{\@cosupervisor}{#1}}
 \newcommand{\chair}[1]{\renewcommand{\@chair}{#1}}
@@ -108,6 +107,7 @@
     \@degreeName
 
   \end{center}
+
   \vspace{\tenblanklines}
   \vfill
    \begin{center}
@@ -126,13 +126,12 @@
   \enlargethispage{0.5in} %make extra room where page number would go
   \setcounter{page}{0}
   \thispagestyle{empty}
-  \begin{minipage}[t][647.0truept][t]{\linewidth}
+\begin{minipage}[t][647.0truept][t]{\linewidth}
   \begin{center}
 
-	\@university \\
-   \@faculty\\
-   \vspace{0.15in}
-   \@department
+	\textbf{\@university} \\
+    \textbf{\@faculty}\\
+    \textbf{\@department}
 
   \end{center}
   \vspace{\tenblanklines}
@@ -141,20 +140,25 @@
   \begin{center}
     \singlespace
     \begin{Large}
-		\textbf{\MakeUppercase{\@degreeName}}
-	 \end{Large}
+		\textbf{\@title}
+	\end{Large}
+	\\ \ \\
+	\begin{Large}
+		\textbf{(\@titleEng)}
+	\end{Large}
+	 \\ \ \\
+     \@programeName
 
+	\@degreeName
   \end{center}
   \vspace{\tenblanklines}
 
-\begin{tabular}{m{5cm} m{9cm}}
-  Үйлдвэрлэлийн дадлага хийсэн байгууллагын нэр: & {\hspace{2cm}} \@company  \\
+\begin{tabular}{m{4cm} m{4cm} m{15cm}}
+  Удирдагч:	& \underline{\hspace{4cm}} & \@supervisor  \\
   \\
-  Шалгасан: \\
-  Үйлдвэрлэлийн дадлага удирдсан ажилтны нэр, албан тушаал:	& {\hspace{2cm}} \@supervisor  \\
 
   \\
-  Гүйцэтгэсэн:	\\ \@programeName\\IV ангийн оюутан & {\hspace{2cm}} \@authorShort \  (\@sisiId)
+  Гүйцэтгэсэн:	& \underline{\hspace{4cm}} & \@authorShort \  (\@sisiId)
   \end{tabular}
 
    \vfill

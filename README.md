@@ -1,1 +1,1 @@
-# Internship report
+# Thesis report
