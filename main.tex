@@ -46,43 +46,46 @@
 \captionsetup[table]{belowskip=0.5pt}
 \usepackage{subfiles}
 
-
 \usepackage{listings}
 \renewcommand{\lstlistingname}{Код}
 \renewcommand{\lstlistlistingname}{\lstlistingname ын жагсаалт}
-\lstdefinelanguage{JavaScript}{
-  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break, const, let},
-  keywordstyle=\color{purple}\bfseries,
-  ndkeywords={class, export, boolean, default, throw, implements, import, this},
-  ndkeywordstyle=\color{blue}\bfseries,
+
+\lstdefinelanguage{TypeScript}{
+  keywords={abstract, any, as, boolean, break, case, catch, class, console,
+    const, continue, debugger, declare, default, delete, do, else, enum, export,
+    extends, false, finally, for, from, function, get, if, implements, import, in,
+    infer, instanceof, interface, keyof, let, module, namespace, never, new, null,
+    number, object, package, private, protected, public, readonly, require, return,
+    set, static, string, super, switch, symbol, this, throw, true, try, type, typeof,
+    undefined, unique, unknown, var, void, while, with, yield, async, await},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{darkgray}\bfseries,
   identifierstyle=\color{black},
   sensitive=false,
   comment=[l]{//},
   morecomment=[s]{/*}{*/},
-  commentstyle=\color{lightgray}\ttfamily,
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
   morestring=[b]',
   morestring=[b]"
 }
 
 \lstset{
-   language=JavaScript,
+   language=TypeScript,
    backgroundcolor=\color{lightgray},
    extendedchars=true,
-   basicstyle=\linespread{0.8}\small\ttfamily
+   basicstyle=\footnotesize\ttfamily,
    showstringspaces=false,
    showspaces=false,
    numbers=left,
    numberstyle=\footnotesize,
    numbersep=9pt,
-   tabsize=3,
+   tabsize=2,
    breaklines=true,
    showtabs=false,
-   captionpos=b,
-   columns=fullflexible
+   captionpos=b
 }
-
-
-
 \lstdefinestyle{mystyle}{
     basicstyle=\ttfamily\small,
     backgroundcolor=\color{backcolour},
