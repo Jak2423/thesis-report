@@ -141,10 +141,6 @@ contract LicenseMarketplace {
          emit LicenseRequestRejected(_requestId, request.fileId, request.requester, request.fileOwner);
       }
 
-      function getAllPublicFiles() external view returns(File[] memory) {
-         return publicFiles;
-      }
-
       function getAllUserFiles() external view returns(File[] memory) {
          return userFiles[msg.sender];
       }
@@ -170,10 +166,6 @@ contract LicenseMarketplace {
 
          return license;
       }
-
-   function validateLicense(uint256 licenseNumber) external view returns (bool) {
-         return usedLicenses[licenseNumber];
-   }
 
    function getPublicFileById(uint256 _id) public view returns (File memory) {
          for (uint256 i = 0; i < publicFiles.length; i++) {
