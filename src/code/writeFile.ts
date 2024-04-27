@@ -1,46 +1,60 @@
-const [file, setFile] = useState<File | null>(null);
-const { connect } = useConnect();
-const { toast } = useToast();
-const fileInputRef = useRef<HTMLInputElement>(null);
-
-const { writeContract, isPending, error, data: hash, isError: issueError } = useWriteContract();
+const { writeContract, isPending, data: hash } = useWriteContract();
 const { isLoading, isSuccess, isError } = useWaitForTransactionReceipt({
-	hash,
+   hash,
 });
-const { isConnected } = useAccount();
+const { isConnected, address } = useAccount();
 
 async function onSubmit(data: z.infer<typeof formSchema>) {
-	if (!isConnected) {
-		connect({ connector: injected() });
-	}
-	try {
-		if (!file) {
-			return;
-		}
-		const res = await pinFileToIPFS(file);
+   if (!isConnected) {
+      connect({ connector: injected() });
+   }
 
-		if (!res.isDuplicate) {
-			writeContract({
-				abi: licenseValidationAbi.abi,
-				address: licenseValidationContract.contractAddress as `0x${string}`,
-				functionName: 'createFile',
-				args: [data.fileName, data.description, 'PDF', res.IpfsHash, data.isPublic],
-			});
+   if (!file) {
+      toast({
+         variant: "destructive",
+         description: "Please select a file to upload.",
+      });
+      return;
+   }
 
-			if (isSuccess) {
-				form.reset();
-			}
-		} else {
-			if (fileInputRef.current) {
-				fileInputRef.current.value = '';
-			}
+   setUploading(true);
 
-			toast({
-				variant: 'destructive',
-				description: 'This file has already been uploaded.',
-			});
-		}
-	} catch (error) {
-		console.error(error);
-	}
+   try {
+      const encryptedFile = await lit.encryptFile(String(fileId), file);
+      const res = await pinFileToIPFS(encryptedFile);
+
+      if (res.isDuplicate) {
+         if (fileInputRef.current) {
+            fileInputRef.current.value = "";
+         }
+         toast({
+            variant: "destructive",
+            description: "This file has already been uploaded.",
+         });
+      } else {
+         writeContract({
+            abi: licenseValidationAbi.abi,
+            address:
+               licenseValidationContract.contractAddress as `0x${string}`,
+            functionName: "createFile",
+            args: [
+               data.fileName,
+               data.description,
+               data.category,
+               res.IpfsHash,
+               file.size,
+            ],
+         });
+      }
+   } catch (error) {
+      console.error("Error uploading file:", error);
+      toast({
+         variant: "destructive",
+         description:
+            "An error occurred while uploading the file. Please try again.",
+      });
+   } finally {
+      setUploading(false);
+      refetch();
+   }
 }

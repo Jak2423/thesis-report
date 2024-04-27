@@ -1,6 +1,6 @@
 # Баклаврын судалгааны ажлын тайлан
 
-Блокчэйн суурьт лиценз баталгаажуулалт / (Licence validation with blockchain)
+Блокчэйн суурьт лиценз баталгаажуулалт / Licence validation with blockchain
 
 ## Сэдэв сонгох үндэслэл:
 
