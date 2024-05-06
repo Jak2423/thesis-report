@@ -20,6 +20,22 @@ async function onSubmit(data: z.infer<typeof formSchema>) {
    setUploading(true);
 
    try {
+      if (!thumbnail) {
+         if (data.category === "Video") {
+            const fileUrl = URL.createObjectURL(file);
+            const thumbnailVideo = await getThumbnailForVideo(
+               fileUrl,
+               file.name,
+            );
+            setThumbnail(thumbnailVideo as File);
+         }
+      }
+      let thumbnailRes = null;
+
+      if (thumbnail) {
+         thumbnailRes = await pinFileToIPFS(thumbnail);
+      }
+
       const encryptedFile = await lit.encryptFile(String(fileId), file);
       const res = await pinFileToIPFS(encryptedFile);
 
@@ -43,6 +59,8 @@ async function onSubmit(data: z.infer<typeof formSchema>) {
                data.category,
                res.IpfsHash,
                file.size,
+               thumbnailRes?.IpfsHash || "",
+               parseEther(String(data.price)),
             ],
          });
       }
