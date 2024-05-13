@@ -17,6 +17,7 @@
 \usepackage{fancyhdr}
 \usepackage{float}
 \usepackage{afterpage}
+\usepackage{longtable} % Required for tables that span multiple pages
 \usepackage{tabularx}
 \usepackage{graphicx}
 \usepackage{amsmath,amssymb,amsbsy}
@@ -160,9 +161,12 @@
 %----------------------------------------------------------------------------------------
 %   Дипломын үндсэн хэсэг эндээс эхэлнэ
 %----------------------------------------------------------------------------------------
-%\addcontentsline{toc}{part}{БҮЛГҮҮД}
+\addcontentsline{toc}{part}{БҮЛГҮҮД}
 % Шинэ бүлэг
-\include{src/body}
+\subfile{src/chapters/chapter1.tex}
+\include{src/chapters/chapter2.tex}
+\include{src/chapters/chapter3.tex}
+
 %----------------------------------------------------------------------------------------
 %   Дүгнэлт эндээс эхэлнэ
 %----------------------------------------------------------------------------------------
