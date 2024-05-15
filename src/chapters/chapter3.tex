@@ -54,8 +54,9 @@
 \lstinputlisting[language=TypeScript,caption=Ухаалаг гэрээг блокчэйнд байршуулах,basicstyle=\linespread{0.6}\ttfamily,frame=single]{src/code/deploy.js}
 
 \subsection{Lit protocol-н файл шифрлэлт болон хандалтын хяналтын нөхцөл}
-Lit Protocol-оор дамжуулан блокчэйнд байршуулсан ухаалаг гэрээнд бичсэн isFileOwnedOrLicensed функц хэрэглэгчийн крипто хэтэвчийн хаяг, файлын дугаараар файлыг зөвхөн бүтээл эзэмшигч эсвэл тухайн бүтээлд лиценз буюу хандах зөвшөөрөлтэй хэрэглэгч эсэхийг баталгаажуулан файлын шифрлэлтийг тайлах түлхүүрийг авах боломжтойгоор хандалтын хяналтын нөхцөлийг тодорхойлон клиент талд файлыг шифрлэнэ. Файлыг шифрлэсний дараа Lit сүлжээ нь хандалтын хяналтын нөхцөлийн тодорхойлсноор хэн шифрлэлтийг тайлах түлхүүр авахыг зөвшөөрнө. Файлын шифрлэлтийн түлхүүр үүсгэх болон авахын тулд хэрэглэгчийн крипто хэтэвчээр баталгаажуулна.
-
+Lit Protocol-оор дамжуулан блокчэйнд байршуулсан ухаалаг гэрээнд бичсэн isFileOwnedOrLicensed функц хэрэглэгчийн крипто хэтэвчийн хаяг, файлын дугаараар файлыг зөвхөн бүтээл эзэмшигч эсвэл тухайн бүтээлд лиценз буюу хандах зөвшөөрөлтэй хэрэглэгч эсэхийг баталгаажуулан файлын шифрлэлтийг тайлах боломжтойгоор хандалтын хяналтын нөхцөлийг тодорхойлж клиент талд файлыг шифрлэнэ.
+\\ Файлыг шифрлэсний дараа Lit сүлжээ нь хандалтын хяналтын нөхцөлд тодорхойлсноор хэн шифрлэлтийг тайлах эсэхийг зөвшөөрнө.
+\\
 \lstinputlisting[language=TypeScript,caption=Lit protocol-н файл шифрлэлт болон хандалтын хяналтын нөхцөл,basicstyle=\linespread{0.6}\ttfamily,frame=single]{src/code/lit.ts}
 
 
@@ -104,8 +105,8 @@ Wagmi-н тодорхойлсон React Hook-г ашиглан цахим бүт
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[scale=0.16]{src/images/drive.png}
-	\caption{Миний сан хуудас}
+	\includegraphics[scale=0.16]{src/images/video-viewer.png}
+	\caption{Video файл харах}
 \end{figure}
 
 \begin{figure}[h!]
@@ -124,4 +125,16 @@ Wagmi-н тодорхойлсон React Hook-г ашиглан цахим бүт
 	\centering
 	\includegraphics[scale=0.16]{src/images/requests.png}
 	\caption{Лиценз хүсэлтийн  хуудас}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.16]{src/images/licences.png}
+	\caption{Лицензийн хуудас}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.16]{src/images/certification.png}
+	\caption{Лицензийн гэрчилгээ харах}
 \end{figure}
